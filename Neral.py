@@ -1,5 +1,27 @@
 #INTRODUCTION
-print("Welcome to Neral!A beginner-friendly crop recommendation tool.Enter mode of farming, water level,soil type,and manure to get a crop suggestion.")
+print("Welcome to Neral!A beginner-friendly crop recommendation tool.Enter mode of farming, water level,soil type,and manure to get a crop recommendation or crop and suitable condtion suggestion.")
+
+
+
+#SUGGESTION FOR INVALID CONDITION
+def suggestion(mode):
+
+    if mode=="hill":
+        return "Try medium water with loamy soil or low water with sandy soil."
+
+    elif mode=="barren":
+        return "Use low water level for Millets."
+
+    elif mode=="open":
+        return ("Try combinations like: "
+                "high water + clay soil (Rice), "
+                "high water + loamy soil (Sugarcane), "
+                "medium water + loamy soil (Wheat/Vegetables), "
+                "low water + sandy soil (Millets/Groundnut).")
+    else:
+       return ""
+
+
 
 #LOADING COMBINATIONS
 def crop(mode,water,soil="none",manure="none"):
@@ -22,14 +44,14 @@ def crop(mode,water,soil="none",manure="none"):
         elif water=="low" and soil=="sandy":
             return "Spices"
         else:
-            return "No suitable crop recommendation,try different combination"
+            return "No suitable crop recommendation,try different combination\nSuggestion:"+suggestion(mode)
 
     # BARREN
     elif mode=="barren":
         if water=="low":
             return "Millets"
         else:
-            return "No suitable crop recommendation,try different combination"
+            return "No suitable crop recommendation,try different combination\nSuggestion:"+suggestion(mode)
 
     # OPEN
     elif mode=="open":
@@ -53,12 +75,14 @@ def crop(mode,water,soil="none",manure="none"):
                 return "Millets"
 
         else:
-            return "No suitable crop recommendation,try different combination"
+                return "No suitable crop recommendation,try       different combination\nSuggestion:"+suggestion(mode)
 
     # DEFAULT
     else:
-        return "Invalid mode"
+        return "Invalid mode"    
 
+   
+        
 #GETTING INPUT FROM THE USER
 while True:
     print("\n--- Neral Crop Recommendation System ---")
